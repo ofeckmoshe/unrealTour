@@ -1,0 +1,40 @@
+.apartmentCard {
+  text-decoration: none !important;
+  color: inherit; }
+  .apartmentCard:hover, .apartmentCard:focus, .apartmentCard:active {
+    text-decoration: none;
+    color: inherit; }
+
+.card {
+  width: 100%;
+  margin-bottom: 15px !important; }
+  .card .cardImage {
+    height: 150px;
+    width: 100%; }
+  .card .price {
+    color: white;
+    z-index: 999;
+    position: absolute;
+    bottom: 10px; }
+  .card p {
+    margin: 2px 0; }
+  .card .title {
+    font-size: 20px; }
+  .card .heart {
+    font-size: 40px !important;
+    z-index: 999;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    opacity: 0.4;
+    text-shadow: -3px 0 white, 0 3px white, 3px 0 white, 0 -3px white; }
+    .card .heart:hover {
+      color: red; }
+  .card .greenSqr {
+    color: white;
+    background-color: green;
+    position: absolute;
+    top: 20px;
+    left: 15px;
+    z-index: 999;
+    font-size: 12px; }

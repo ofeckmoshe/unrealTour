@@ -1,0 +1,53 @@
+.info {
+  width: 50%;
+  padding: 15px; }
+  @media screen and (max-width: 767px) {
+    .info {
+      width: 100%; } }
+  .info h1 {
+    font-size: 35px;
+    padding: 15px 0; }
+  .info h2 {
+    font-weight: normal;
+    font-size: 18px;
+    padding: 15px 0; }
+  .info button {
+    color: white;
+    background-color: red;
+    border-radius: 25px;
+    border: none;
+    width: 180px;
+    height: 40px; }
+  .info button:hover {
+    background-color: #ba1d22; }
+
+.info2 {
+  width: 50%;
+  padding: 15px; }
+  @media screen and (max-width: 767px) {
+    .info2 {
+      width: 100%; } }
+  .info2 h1 {
+    font-size: 35px;
+    padding: 15px 0; }
+  .info2 h2 {
+    font-weight: normal;
+    font-size: 18px;
+    padding: 15px 0; }
+  .info2 input {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top: 1px solid;
+    border-left: 1px solid;
+    border-bottom: 1px solid;
+    height: 50px;
+    padding-left: 15px; }
+  .info2 button {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border: none;
+    color: white;
+    background-color: red;
+    height: 50px; }
+  .info2 button:hover {
+    background-color: #ba1d22; }

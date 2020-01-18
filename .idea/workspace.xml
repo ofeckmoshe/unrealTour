@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f630ea52-a54e-4239-8dfd-b9a010368188" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="SCSS File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1SvY6tBoTGq5TtoDyw3TfBtXEt8" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../posts-and-comments" />
+    <property name="list.type.of.created.stylesheet" value="SCSS" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path" value="node" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.customizations" />
+    <property name="ts.external.directory.path" value="D:\WebStorm 2019.2.4\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Studies\webStorm\realtor\realtor\public" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="npm.npm start">
+    <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
+      <method v="2" />
+    </configuration>
+    <configuration name="npm start" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f630ea52-a54e-4239-8dfd-b9a010368188" name="Default Changelist" comment="" />
+      <created>1572445364518</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1572445364518</updated>
+      <workItem from="1572445367078" duration="855000" />
+      <workItem from="1572508078744" duration="13573000" />
+      <workItem from="1572711848818" duration="252000" />
+      <workItem from="1572766539636" duration="9830000" />
+      <workItem from="1572850864359" duration="15036000" />
+      <workItem from="1572941677642" duration="2371000" />
+      <workItem from="1573028155025" duration="10860000" />
+      <workItem from="1573113101427" duration="15785000" />
+      <workItem from="1573191693286" duration="15141000" />
+      <workItem from="1573373254485" duration="14174000" />
+      <workItem from="1573461336262" duration="7189000" />
+      <workItem from="1573494243633" duration="4155000" />
+      <workItem from="1573546106486" duration="10410000" />
+      <workItem from="1573633071615" duration="6404000" />
+      <workItem from="1573716506234" duration="438000" />
+      <workItem from="1573885329569" duration="1628000" />
+      <workItem from="1573974583792" duration="13646000" />
+      <workItem from="1574060741032" duration="17370000" />
+      <workItem from="1574147722020" duration="12276000" />
+      <workItem from="1574334386643" duration="327000" />
+      <workItem from="1574583432919" duration="14802000" />
+      <workItem from="1574624397617" duration="314000" />
+      <workItem from="1574665992895" duration="13128000" />
+      <workItem from="1574752548247" duration="10512000" />
+      <workItem from="1574839552322" duration="12838000" />
+      <workItem from="1575015539979" duration="543000" />
+      <workItem from="1575113369342" duration="1836000" />
+      <workItem from="1575115252154" duration="2172000" />
+      <workItem from="1575117459979" duration="208000" />
+      <workItem from="1575117918448" duration="20000" />
+    </task>
+    <task id="LOCAL-00001" summary="Working virsion after fixing header and import JSX">
+      <created>1572786028282</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1572786028282</updated>
+    </task>
+    <task id="LOCAL-00002" summary="add new files to ghit">
+      <created>1572786108485</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1572786108485</updated>
+    </task>
+    <task id="LOCAL-00003" summary="add new files to ghit">
+      <created>1573658042036</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1573658042036</updated>
+    </task>
+    <task id="LOCAL-00004" summary="add new files to ghit">
+      <created>1574846383221</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1574846383221</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Just testing the commit">
+      <created>1574846617578</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1574846617578</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Just testing the commit">
+      <created>1574852187905</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1574852187905</updated>
+    </task>
+    <task id="LOCAL-00007" summary="final design 30/11">
+      <created>1575117585323</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1575117585323</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Working virsion after fixing header and import JSX" />
+    <MESSAGE value="add new files to ghit" />
+    <MESSAGE value="Just testing the commit" />
+    <MESSAGE value="final design 30/11" />
+    <option name="LAST_COMMIT_MESSAGE" value="final design 30/11" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/Filters.jsx</url>
+          <line>139</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

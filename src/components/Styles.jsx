@@ -114,6 +114,21 @@ const SignOrLog = styled.div`
     padding:25px
 `;
 
+const SignUpDiv = styled.div`
+    display:flex;
+    flex-direction:row;
+    z-index:9999;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background-color:black;
+    opacity:0.9;
+    text-align:center;
+    justify-content:center;
+`;
+
 const FbBtn = styled.button`
     color:white;
     background-color:rgb(57, 88, 155);
@@ -247,4 +262,4 @@ const BedLi = styled.li`
     color:red}
 `;
 
-export  {MergeDivs2,MergeDivs,MyUl ,MyLi,BedLi,MyDiv,MyBtn,GreenRect,BlackRectF,BlackRectS,InHeart,FBtn,ABtn,SubLinks,LogInBtn,FbBtn,SignOrLog,AskBtn,ShareBtn,Deat,DeatVal,DeatBox,BImage};
+export  {SignUpDiv,MergeDivs2,MergeDivs,MyUl ,MyLi,BedLi,MyDiv,MyBtn,GreenRect,BlackRectF,BlackRectS,InHeart,FBtn,ABtn,SubLinks,LogInBtn,FbBtn,SignOrLog,AskBtn,ShareBtn,Deat,DeatVal,DeatBox,BImage};

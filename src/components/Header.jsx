@@ -2,7 +2,10 @@ import React from "react";
 import "./Header.css";
 import { navigation } from "./navigation.js";
 import {Fade,Col,Row} from 'react-bootstrap';
-import {LogInBtn,FbBtn,SignOrLog} from './Styles'
+import SingUp from './signUp'
+// import {LogInBtn,FbBtn,SignOrLog} from './Styles'
+// import {Link} from "react-router-dom";
+import Login from './login'
 class Links extends React.Component{
     constructor(props){
         super(props);
@@ -43,6 +46,7 @@ class Header extends React.Component{
             toggle:false,
             active:null,
             logIn:false,
+            signUp:false,
             showItem:"block"
         }
     }
@@ -63,6 +67,10 @@ class Header extends React.Component{
         this.setState({logIn:!this.state.logIn})
     };
 
+    openSignUp = () =>{
+        this.setState({signUp:!this.state.signUp})
+    };
+
     render() {
         const{toggle} = this.state;
         return(
@@ -81,27 +89,11 @@ class Header extends React.Component{
                         <li style={{display:this.state.showItem}} class="d-none d-lg-block">
                             <h4 onClick={this.openLogIn}>Log In</h4>
                             {this.state.logIn &&
-                            <SignOrLog>
-                                <Col type={"8"}>
-                                    <h4 style={{color:"black"}}>Log in to your account</h4>
-                                    <input type={"email"} placeholder={"Email"} style={{margin:"10px 0"}}/>
-                                    <input type={"password"} placeholder={"Password"}/>
-                                    <a style={{color:"gray"}} href={"/"}>forgot password?</a>
-                                    <LogInBtn>Log In</LogInBtn>
-                                    <FbBtn>Log In With Facebook</FbBtn>
-                                </Col>
-                                <Col type={"4"}>
-                                    <h4 style={{color:"black"}}><a style={{color:"red"}} href={"/"}>No account? Sign Up</a></h4>
-                                    <img src={"../images/84e94sp.png"}/>
-                                    <img src={"../images/nar-logo.png"} style={{maxWidth:"250px"}}/>
-                                    <h4 onClick={this.openLogIn}>
-                                        <i style={{fontSize:"24px",position:"absolute",top:"0",right:"40px",color:"black"}} className="fa">&#xf00d;</i>
-                                    </h4>
-                                </Col>
-                            </SignOrLog>
+                                <Login/>
                             }
                         </li>
-                        <li style={{display:this.state.showItem}} class="d-none d-xl-block"><h4>Sign Up</h4></li>
+                        <li style={{display:this.state.showItem}} class="d-none d-xl-block" onClick={this.openSignUp}><h4>Sign Up</h4></li>
+                        {this.state.signUp&&<SingUp/>}
                         <li style={{display:this.state.showItem}} class="d-none d-xl-block"><h4> | </h4></li>
                         <li style={{display:this.state.showItem}} class="d-none d-xl-block"><h4>Advertise</h4></li>
                         <li style={{display:this.state.showItem}} class="d-none d-xl-block"><img src={"../images/icons8-iphone-32.png"}/></li>

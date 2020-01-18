@@ -8,7 +8,7 @@ const getCitiesFromServer = (onCitiesSuccess) =>{
     ).then(success => {
         cities = success["cities"];
         onCitiesSuccess(cities)
-        // console.log(cities);
+        console.log(cities);
         }
     ).catch(error => console.log(error));
         return cities;

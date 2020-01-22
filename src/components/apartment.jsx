@@ -1,6 +1,6 @@
 import React from 'react';
 import {Carousel, Container, Row,Col} from "react-bootstrap";
-import {apartments, getApartmentsFromServer, getSingleApartment} from "./apartments";
+import {getSingleApartment} from "../api/controllers/apartments";
 import {GreenRect,BlackRectF,BlackRectS,AskBtn,ShareBtn} from "./Styles";
 import Question from "./Question";
 
@@ -17,7 +17,7 @@ class Apartment extends React.Component{
 
     async componentDidMount() {
         const apartment = await getSingleApartment(this.props.match.params.id);
-        this.onSuccess(apartment);
+        await this.onSuccess(apartment);
     };
     onSuccess = (apartment) => {
         console.log("apartment: ", apartment.images);
@@ -34,12 +34,8 @@ class Apartment extends React.Component{
         
     };
 
-    getApartmentById = (id) =>{
-        return apartments.find(apartment => apartment.id === parseInt(id));
-    };
-
     getImagesLength =(apartmentId) =>{
-        const apartment = this.getApartmentById(apartmentId);
+        const apartment = getSingleApartment(apartmentId);
         return apartment.images.length;
     };
 

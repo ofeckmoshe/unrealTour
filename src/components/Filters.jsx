@@ -1,6 +1,6 @@
 import React from "react";
-import {getApartmentsFromServer} from "./apartments.js";
-import {getCitiesFromServer} from "./cities.js";
+// import {getApartmentsFromServer} from "./apartments.js";
+import {getCitiesFromServer} from "../api/controllers/cities";
 import Gallery from "./Gallery";
 import TextFilter from "./TextFilter";
 import {Container, Row} from 'react-bootstrap';
@@ -9,7 +9,7 @@ import BedsFilter from "./BedsFilter";
 import RoomsFilter from "./RoomsFilter";
 import PropType from "./PropType";
 import {FBtn} from "./Styles";
-
+import {getApartmentsFromServer,getSingleApartment} from "../api/controllers/apartments"
 
 class Filters extends React.Component{
     constructor(props){

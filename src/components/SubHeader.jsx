@@ -2,7 +2,7 @@ import React from 'react';
 import {Container, Row,Col} from "react-bootstrap";
 import {ABtn, BImage, SubLinks} from './Styles'
 import {Link} from "react-router-dom";
-import {getApartmentsFromServer} from "./apartments";
+import {getApartmentsFromServer} from "../api/controllers/apartments";
 import Gallery from "./Gallery";
 import Detailes from "./detailes";
 import Neighborhoods from "./Neighborhoods";
@@ -46,28 +46,33 @@ class SubHeader extends React.Component {
         return (
             <div>
                 <Container>
-                <Row style={{alignItems: 'baseline',justifyContent: 'center'}}>
-                    <img src=".\images\icons8-checkmark-16.png" style={{height: 'fit-content',margin:'0 5px'}}/>
-                    <p style={{margin:'0 5px'}}>Be Ready to Buy... How Much Can You Borrow?</p>
-                    <ABtn style={{margin:'0 5px'}}>Get Pre-Approved</ABtn>
-                </Row>
+                    <Row style={{alignItems: 'baseline',justifyContent: 'center',margin:'5px'}}>
+                        <img src=".\images\icons8-checkmark-16.png" style={{height: 'fit-content',margin:'0 5px'}}/>
+                        <p style={{margin:'0 5px'}}>Be Ready to Buy... How Much Can You Borrow?</p>
+                        <ABtn style={{margin:'0 5px'}}>Get Pre-Approved</ABtn>
+                    </Row>
                 </Container>
-                <div style={{backgroundImage:"url('./images/main_image.png')",minHeight:"300px",backgroundSize:'cover',margin:'15px 0',display:'flex',flexDirection:"column",justifyContent:'center'}}>
-                    <h1 style={{color:'white',textAlign:'center'}}>The Home of Home Search</h1>
-                    <h2 style={{color:'white',textAlign:'center',fontSize:'18px'}}>With the most complete source of homes for sale & real estate near you</h2>
+                <Container style={{display:'flex',alignItems: 'baseline',justifyContent: 'center',alignItems:'center'}}>
+                    <video autoplay={'on'} loop={'loop'} muted={'on'} width={'100%'} style={{position: 'relative'}}>
+                        <source type={"video/mp4"} src='../../1632 Stradella Road Bel Air_00_00_45-00_01_10 - oDownloader.mp4'/>
+                    </video>
+                <div style={{display:'flex',flexDirection:"column",position:'absolute'}}>
+                    <h1 style={{color:'white',textAlign:'center'}} className="d-none d-md-block">The Home of Home Search</h1>
+                    <h2 style={{color:'white',textAlign:'center'}} className="d-none d-md-block">With the most complete source of homes for sale & real estate near you</h2>
                     <Container>
-                    <Row style={{justifyContent:'center', margin:'15px 0'}}>
-                        <div><SubLinks href="/"><b>BUY</b></SubLinks></div>
-                        <div><SubLinks href="/"><b>RENT</b></SubLinks></div>
-                        <div><SubLinks href="/"><b>JUST SOLD!</b></SubLinks></div>
-                        <div><SubLinks href="/"><b>HOME VALUE</b></SubLinks></div>
-                    </Row>
-                    <Row style={{justifyContent:'center'}}>
-                        <input onChange={this.hendleChanges} type="text" name="city" placeholder="Address, City, Neighborhood or Zip" style={{width:'300px'}}/>
-                        <Link to={{pathname:"/Filters",state:{test:this.state.val}}}><button style={{backgroundColor:'red',borderColor:'red'}}>Search</button></Link>
-                    </Row>
+                        <Row style={{justifyContent:'center', margin:'15px 0'}}>
+                            <div><SubLinks href="/"><b>BUY</b></SubLinks></div>
+                            <div><SubLinks href="/"><b>RENT</b></SubLinks></div>
+                            <div><SubLinks href="/"><b>JUST SOLD!</b></SubLinks></div>
+                            <div><SubLinks href="/"><b>HOME VALUE</b></SubLinks></div>
+                        </Row>
+                        <Row style={{justifyContent:'center'}}>
+                            <input onChange={this.hendleChanges} type="text" name="city" placeholder="Address, City, Neighborhood or Zip" style={{width: '70%'}}/>
+                            <Link to={{pathname:"/Filters",state:{test:this.state.val}}}><button style={{backgroundColor:'red',borderColor:'red'}}>Search</button></Link>
+                        </Row>
                     </Container>
                 </div>
+                </Container>
                 <div>
                     <Container>
                         <h4 style={{margin:'15px 0'}}>{this.state.apartmentsLength} New apartments in RealTour</h4>

@@ -117,14 +117,24 @@ const SignOrLog = styled.div`
 const SignUpDiv = styled.div`
     display:flex;
     flex-direction:row;
+    z-index:99999;
+    position:fixed;
+    background-color:black;
+    opacity:0.9;
+    text-align:center;
+    justify-content:center;
+`;
+
+const BlurDiv = styled.div`
     z-index:9999;
     position:fixed;
+    background-color:black;
+    opacity:0.9;
     top:0;
     left:0;
     right:0;
     bottom:0;
-    background-color:black;
-    opacity:0.9;
+    display:flex;
     text-align:center;
     justify-content:center;
 `;
@@ -262,4 +272,4 @@ const BedLi = styled.li`
     color:red}
 `;
 
-export  {SignUpDiv,MergeDivs2,MergeDivs,MyUl ,MyLi,BedLi,MyDiv,MyBtn,GreenRect,BlackRectF,BlackRectS,InHeart,FBtn,ABtn,SubLinks,LogInBtn,FbBtn,SignOrLog,AskBtn,ShareBtn,Deat,DeatVal,DeatBox,BImage};
+export  {BlurDiv,SignUpDiv,MergeDivs2,MergeDivs,MyUl ,MyLi,BedLi,MyDiv,MyBtn,GreenRect,BlackRectF,BlackRectS,InHeart,FBtn,ABtn,SubLinks,LogInBtn,FbBtn,SignOrLog,AskBtn,ShareBtn,Deat,DeatVal,DeatBox,BImage};

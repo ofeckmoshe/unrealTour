@@ -6,23 +6,24 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link
+    // Link
 } from "react-router-dom";
 
 import Header from "./components/Header.jsx";
 import Filters from "./components/Filters";
 import Footer from "./components/Footer";
-import SignUp from './components/signUp'
+import UserPage from "./components/UserPage"
+// import SignUp from './components/signUp'
 
 class App extends React.Component{
   render() {
-    const {items} = this.props;
+    // const {items} = this.props;
     return (
         <Router>
             <Header/>
             <Switch>
                 <Route path={"/Filters"} component={(props) => <Filters data={props.location.state.test}/>}/>
-
+                <Route path={"/UserPage"} component={UserPage}/>
                 <Route path={"/apartment/:id"} component={Apartment}/>
                 <Route path="/" component={GalleryWrapper}/>
             </Switch>

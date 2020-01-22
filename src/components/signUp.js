@@ -30,7 +30,6 @@ class SignUp extends Component {
     }
     render() {
         return (
-            <div>
                 <SignUpDiv>
                     <form method="GET" action="/user" onSubmit={this.onSubmit}>
                     <div style={{borderBottom:"1px solid red",color:"white"}}>
@@ -93,10 +92,12 @@ class SignUp extends Component {
                             </InputGroup> 
                         </Col>
                     </Row>
-                    <input type="submit" variant="primary" style={{color:"white", width: "100%", margin:"10px",borderRadius:"5px",borderColor:"blue",backgroundColor:"blue"}}/>
+                    <input type="submit" variant="primary" style={{color:'white',backgroundColor:'blue',borderColor:'blue',margin:'5px'}}/>
+                    <button onClick={this.props.openSignUp} style={{color:'white',backgroundColor:'red',borderColor:'red',margin:'5px'}}>
+                        Not Now
+                    </button>
                     </form>
                 </SignUpDiv>
-            </div>
         );
     }
 }

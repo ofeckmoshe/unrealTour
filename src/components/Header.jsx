@@ -55,8 +55,8 @@ class Header extends React.Component {
     }
 
     componentWillMount() {
-        if(JSON.parse(Cookie.get('user'))){
-            this.state =  { userName: JSON.parse(Cookie.get('user')).first_name }
+        if(Cookie.get('user')){
+            this.setState({ userName: JSON.parse(Cookie.get('user')).first_name });
         }
     }
 
@@ -123,6 +123,7 @@ class Header extends React.Component {
                                 </Nav.Link>}
                                 <Nav.Link >
                                     <h4 style={{cursor: "pointer" }} onClick={this.openSignUp}>Sign Up</h4>
+                                    {this.state.signUp && <BlurDiv><SingUp openSignUp={this.openSignUp} /></BlurDiv>}
                                 </Nav.Link>
                                 <Nav.Link>
                                     <Link to={{pathname:"/Filters",state:{test:this.state.val}}} 

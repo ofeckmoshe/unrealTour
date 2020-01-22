@@ -35,8 +35,6 @@ class UserPage extends Component {
             [name]: val,
             val: val,
         });
-        // this.state.myAppartment[name] = val;
-        // console.log(this.state.myAppartment)
     };
 
     hendleSelect = (e) => {
@@ -48,7 +46,9 @@ class UserPage extends Component {
         e.preventDefault()
         const formData = new FormData();
         const imagesArr = [];
+        this.state.main_image &&
         imagesArr.push(this.state.main_image);
+        this.state.images &&
         imagesArr.push(...this.state.images);
         imagesArr.forEach(image => {
             formData.append('images', image);
@@ -103,7 +103,7 @@ class UserPage extends Component {
         }
         return (
             <Container style={{ textAlign: 'center' }}>
-                <h1>Hello , Good to see you again</h1>
+                <h1>Hello {this.state.user.first_name}, Good to see you again</h1>
                 <button onClick={this.openForm}>add apartment</button>
                 {this.state.formOpen &&
                     <Form>

@@ -4,6 +4,8 @@ import Cookie from 'js-cookie';
 import { getAllCitiesFromServer } from "../api/controllers/cities";
 import {addApartment} from "../api/controllers/apartments"
 import {addImages} from "../api/controllers/images"
+import {getApartmentsFromServer,getSingleApartment,getWishList} from "../api/controllers/apartments";
+import Gallery from "./Gallery";
 
 class UserPage extends Component {
     constructor(props) {
@@ -11,11 +13,28 @@ class UserPage extends Component {
         this.state = {
             user: Cookie.get('user') ? JSON.parse(Cookie.get('user')) : null,
             formOpen: false,
+            counter:0,
+            isButtonDisabled:true,
+            query:{},
+            myUpload:false,
+            myWishList:false,
         }
     }
 
-    componentDidMount() {
+    async componentDidMount() {
+        this.state.query.user_id=this.state.user.id
         getAllCitiesFromServer(this.onCitiesSuccess)
+        getApartmentsFromServer(this.onSuccess,this.state.query)
+        this.setState({wishList:await getWishList(this.state.user.id),done:true})
+    };
+    
+
+    onSuccess = (apt) => {
+        // console.log(apt)
+        this.setState({
+            apartments:  apt,
+            
+        });
     };
 
     onCitiesSuccess = (cities) => {
@@ -34,12 +53,13 @@ class UserPage extends Component {
         this.setState({
             [name]: val,
             val: val,
+            counter:++this.state.counter
         });
+
     };
 
     hendleSelect = (e) => {
         const name = e.target.name;
-        // console.log(name)
     };
 
     upload = (e) => {
@@ -66,25 +86,24 @@ class UserPage extends Component {
             property_type:this.state.property_type,
             description:this.state.description,
         }
-        console.log("myAppartment", myAppartment)
         for (let prop in myAppartment) {
-            // console.log(this.state.myAppartment[prop])
             formData.append(prop, myAppartment[prop])
         }
         addApartment(formData);
-        // addImages(newApartment.id, this.state.myAppartment.images);
         this.openForm()
     }
 
     fileUpload =(e) =>{ 
         this.setState({
-            main_image : e.target.files[0]
+            main_image : e.target.files[0],
+            counter :++this.state.counter
         })
     }
 
     filesUpload =(e)=>{
         this.setState({
-            images : e.target.files
+            images : e.target.files,
+            counter :++this.state.counter
         }) 
     }
 
@@ -96,17 +115,37 @@ class UserPage extends Component {
         }
     }
 
+    myUpload = () =>{
+        this.setState({myUpload:!this.state.myUpload})
+    }
+
+    myWishList = () =>{
+        this.setState({myWishList:!this.state.myWishList})
+    }
+
     render() {
+        if(this.state.done){
+            console.log(this.state.wishList)
+        }
         const citiesArr = [];
         for (var city in this.state.cities) {
             citiesArr.push(this.state.cities[city].name);
         }
         return (
-            <Container style={{ textAlign: 'center' }}>
-                <h1>Hello {this.state.user.first_name}, Good to see you again</h1>
-                <button onClick={this.openForm}>add apartment</button>
+            <Container>
+            <Container 
+            style={{ textAlign: 'center', backgroundImage: "url(./images/realestate-aidturk.jpg)",backgroundSize:'cover' ,height:'550px',position:'relative'}}>
+                <h1 style={{textShadow:'2px 2px 2px lightseagreen'}}>
+                    Hello {this.state.user.first_name}, Good to see you again</h1>
+                <div style={{display:'flex',flexDirection:'row',justifyContent:'space-between'}}>
+                <Button variant="info" onClick={this.openForm} style={{float:'left',display:'block'}}>
+                    add apartment</Button>
+                <Button variant="info" onClick={this.myUpload} style={{float:'left'}}>
+                    Your apartments</Button>
+                <Button variant="info" onClick={this.myWishList} style={{float:'left'}}>
+                    Your wish list</Button></div>
                 {this.state.formOpen &&
-                    <Form>
+                    <Form style={{backgroundColor:'aliceblue',padding:'15px'}}>
                         <Form.Row>
                             <Form.Group as={Col} controlId="formGridState">
                                 <Form.Label>City</Form.Label>
@@ -192,10 +231,36 @@ class UserPage extends Component {
                                 </Form.Control>
                             </Form.Group>
                         </Form.Row>
-                        <Button variant="primary" type="submit" onClick={this.upload}>
+                        <Button variant={this.state.counter == 11 ?"primary" :"light"} type="submit" 
+                                onClick={this.upload} disabled={this.state.counter == 11 ? false: true}>
                             Submit
                     </Button>
                     </Form>}
+                    <Row style={{position:'absolute',bottom:0}}>
+                        <h1 className={'col-12'} style={{textShadow:'2px 2px 2px lightseagreen'}}>you have uploaded  - {this.state.apartments?this.state.apartments.length:'0'} apartments,</h1>
+                        <h1 className={'col-12'} style={{textShadow:'2px 2px 2px lightseagreen'}}>and - {this.state.wishList?this.state.wishList.length:'0'} in wish list</h1>
+                    </Row>
+            </Container>
+            {this.state.apartments && this.state.myUpload &&
+            <div id={'apartmentDeck'} className={'row card-deck cards d-flex justify-content-center'} style={{alignItems:"center",padding:'10px',overflowX:'auto'}}>
+                    <h3 className={'col-12'}>your uploaded apartments list - {this.state.apartments.length} apartments is available</h3>
+                    {this.state.apartments.map((item,i) => {
+                        return (
+                            <Gallery {...item} key = {i} order={'row'}/>
+                        )
+                    })
+                    }
+                </div>}
+            {this.state.wishList && this.state.myWishList &&
+            <div id={'apartmentDeck'} className={'row card-deck cards d-flex justify-content-start'} style={{padding:'10px',overflowX:'auto'}}>
+                    <h3 className={'col-12'}>your wish list - {this.state.wishList.length} apartments is available</h3>
+                    {this.state.wishList.map((item,i) => {
+                        return (
+                            <Gallery {...item} key = {i} order={'row'}/>
+                        )
+                    })
+                    }
+                </div>}
             </Container>
         );
     }

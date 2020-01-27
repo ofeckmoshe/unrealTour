@@ -30,11 +30,30 @@ export const getSingleApartment = async (id) =>{
 }
 
 export const addApartment = async (form_data) =>{
-    console.log('data1',form_data)
+    // console.log('data1',form_data)
     try{
         const apartment = await fetcher.post(`/apartments/`, form_data);
-        console.log('data2', apartment.data)
+        // console.log('data2', apartment.data)
         return apartment.data
+    }catch(error){
+        console.log(error);
+    }
+}
+
+export const addWish = async (user_id,apartment_id) =>{
+    try{
+        const apartment = await fetcher.post(`/wish_list`, {user_id,apartment_id});
+        // console.log('data2', apartment.data)
+        return apartment.data
+    }catch(error){
+        console.log(error);
+    }
+}
+
+export const getWishList = async (id) =>{
+    try{
+        const apartments = await fetcher.get(`/wish_list?user_id=${id}`);
+        return apartments.data
     }catch(error){
         console.log(error);
     }

@@ -2,14 +2,25 @@ import React from 'react';
 import "./Gallery.css";
 import {cities} from "./apartments";
 import {Link} from "react-router-dom";
+import Cookie from 'js-cookie'
+import {getApartmentsFromServer,getSingleApartment,getWishList} from "../api/controllers/apartments";
 
 class Gallery extends React.Component{
     constructor(props){
         super(props);
         this.state={
             order:this.props.order,
+            user: Cookie.get('user') ? JSON.parse(Cookie.get('user')) : null,
         }
     }
+
+    async componentDidMount() {
+        if(Cookie.get('user')){
+            this.setState({wishList:await getWishList(this.state.user.id),done:true})
+        }
+    };
+
+    
     changeCardSize = ()=>{
         if(this.state.order === "row"){
             return "100%";
@@ -17,10 +28,25 @@ class Gallery extends React.Component{
             return "700px"
         }
     };
+    addToWishList = (e) =>{
+        if(!this.getApartmentOnWish(this.props.id)){
+            this.props.addToWishList(this.state.user.id,this.props.id)
+            window.location.reload()
+        }
+    }
+
+    getApartmentOnWish = (id)=>{
+        for(var apt in this.state.wishList){
+            if(this.state.wishList[apt].id === id){
+                return true;
+            }
+        }
+        return false;
+    }
+    
     render(){
         const {title, main_image, price, address, number_of_bath,number_of_room,sqft,city_name,city_id,id,order,sale_status,created_on} = this.props;
         const sqftText = sqft && `sqft: ${sqft}`;
-
         return(
             <div className={`${order === 'row' ? "col-lg-3 col-md-6 col-sm-10 col-xs-12 d-flex justify-content-center":'col-10'}`}>
                 <Link to={`/apartment/${id}`} className={"apartmentCard"} style={{width:"100%"}}>
@@ -35,10 +61,11 @@ class Gallery extends React.Component{
                         <p>Address: {address} </p>
                         <p>Rent/Sell: {sale_status}</p>
                         <span>beds: {number_of_bath} rooms: {number_of_room} {sqftText}</span>
-                        <i className={"heart fas fa-heart"}></i>
+                        
                         <span className={'greenSqr'}>{new Date(created_on).toLocaleDateString()}</span>
                     </div>
                 </Link>
+                <i className={"heart fas fa-heart"} onClick={this.addToWishList} style={{color:this.getApartmentOnWish(id)?'red':'none'}}></i>
             </div>
         )
     }

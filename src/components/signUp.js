@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, InputGroup, FormControl, Form, ButtonGroup, Button } from 'react-bootstrap';
 import { SignUpDiv } from './Styles'
-import {newUserSignUp} from '../api/controllers/signUp'
+import {newUserSignUp, getAllUsers} from '../api/controllers/signUp'
 
 class SignUp extends Component {
     constructor(props) {
@@ -20,22 +20,43 @@ class SignUp extends Component {
         }
     }
 
+
+    async componentDidMount(){
+        this.setState({
+            users:await (await getAllUsers()).data.users
+        })
+    }
+
     onSubmit = (e) => {
         e.preventDefault();
-        // console.log(this.state)
         if(this.state.email && this.state.password && this.state.first_name && this.state.last_name && this.state.phone){
             const user ={
-                email:this.state.email,
-                password:this.state.password,
-                first_name:this.state.first_name,
-                last_name:this.state.last_name,
-                phone:this.state.phone
+                email:this.state.email.value,
+                password:this.state.password.value,
+                first_name:this.state.first_name.value,
+                last_name:this.state.last_name.value,
+                phone:this.state.phone.value
             }
-            newUserSignUp(user)
+            if(!this.emailCheck(this.state.email.value)){
+                newUserSignUp(user)
+                this.props.openSignUp()
+            }else{
+                alert(`${this.state.email.value} is already in use`)
+            }
+            
         }else{
             alert('you must fill all fields')
         }
         
+    }
+
+    emailCheck = (mail)=>{
+        for(var user in this.state.users){
+            if(this.state.users[user].email == mail){
+                return true;
+            }
+        }
+        return false;
     }
 
     inputChange = ({ target: { name, value } }) => {
@@ -43,8 +64,8 @@ class SignUp extends Component {
         if (this.state[name].validations.required && !value) {
             errors.push(`${name} is required`)
         }
+        this.state[name].value = value
         this.setState({
-            [name]: value,
             [`${name}Errors`]: errors
         })
     }
@@ -159,7 +180,7 @@ class SignUp extends Component {
                             ))}
                         </Col>
                     </Row>
-                    <input type="submit" variant="primary" style={{ color: 'white', backgroundColor: 'blue', borderColor: 'blue', margin: '5px' }} onClick={this.onSubmit, this.props.openSignUp}/>
+                    <input type="submit" variant="primary" style={{ color: 'white', backgroundColor: 'blue', borderColor: 'blue', margin: '5px' }} onClick={this.onSubmit}/>
                     <button onClick={this.props.openSignUp} style={{ color: 'white', backgroundColor: 'red', borderColor: 'red', margin: '5px' }}>
                         Not Now
                     </button>

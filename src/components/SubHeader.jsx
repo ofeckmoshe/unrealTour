@@ -2,7 +2,7 @@ import React from 'react';
 import {Container, Row,Col} from "react-bootstrap";
 import {ABtn, BImage, SubLinks} from './Styles'
 import {Link} from "react-router-dom";
-import {getApartmentsFromServer} from "../api/controllers/apartments";
+import {getApartmentsFromServer,addWish} from "../api/controllers/apartments";
 import Gallery from "./Gallery";
 import Detailes from "./detailes";
 import Neighborhoods from "./Neighborhoods";
@@ -42,6 +42,10 @@ class SubHeader extends React.Component {
         });
     };
 
+    addToWishList = (user_id,apartment_id) =>{
+        addWish(user_id,apartment_id)
+    }
+
     render() {
         return (
             <div>
@@ -80,7 +84,7 @@ class SubHeader extends React.Component {
                     <Row>
                         {this.state.shortApartments.map((item,i) => {
                         return (
-                        <Gallery {...item} key = {i} order={"row"}/>
+                        <Gallery {...item} key = {i} order={"row"} addToWishList={this.addToWishList}/>
                         )
                     })}
                     </Row>

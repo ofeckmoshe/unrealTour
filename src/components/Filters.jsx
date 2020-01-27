@@ -9,7 +9,7 @@ import BedsFilter from "./BedsFilter";
 import RoomsFilter from "./RoomsFilter";
 import PropType from "./PropType";
 import {FBtn} from "./Styles";
-import {getApartmentsFromServer,getSingleApartment} from "../api/controllers/apartments"
+import {getApartmentsFromServer,getSingleApartment,addWish} from "../api/controllers/apartments"
 
 class Filters extends React.Component{
     constructor(props){
@@ -30,7 +30,7 @@ class Filters extends React.Component{
             sale_status:"",
             order:"row",
             val:this.props.data ? this.props.data:"",
-            query:{}
+            query:{},
         }
     }
     componentDidMount() {
@@ -113,6 +113,10 @@ class Filters extends React.Component{
             this.setState({order:"column"}):
             this.setState({order:"row"})
     };
+
+    addToWishList = (user_id,apartment_id) =>{
+        addWish(user_id,apartment_id)
+    }
     render() {
         return(
             <Container>
@@ -133,7 +137,7 @@ class Filters extends React.Component{
                 <div id={'apartmentDeck'} className={'row card-deck cards d-flex justify-content-center'} style={{alignItems:"center",flexDirection:this.state.order}}>
                     {this.state.newApartments.map((item,i) => {
                         return (
-                            <Gallery {...item} key = {i} order={this.state.order}/>
+                            <Gallery {...item} key = {i} order={this.state.order} addToWishList={this.addToWishList} apartments={this.state.apartments}/>
                         )
                     })
                     }

@@ -29,18 +29,6 @@
     font-size: 20px;
   }
 
-  & .heart{
-    font-size: 40px!important;
-    z-index: 999;
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    opacity: 0.4;
-    text-shadow: -3px 0 white, 0 3px white, 3px 0 white, 0 -3px white;
-    &:hover {
-      color: red;
-    }
-  }
 
   & .greenSqr {
     color: white;
@@ -50,5 +38,18 @@
     left: 15px;
     z-index: 999;
     font-size: 12px;
+  }
+}
+
+.heart{
+  font-size: 40px!important;
+  z-index: 999;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  opacity: 0.4;
+  text-shadow: -3px 0 white, 0 3px white, 3px 0 white, 0 -3px white;
+  &:hover {
+    color: red;
   }
 }

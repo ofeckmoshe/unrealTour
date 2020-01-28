@@ -56,8 +56,8 @@ class SubHeader extends React.Component {
                         <ABtn style={{margin:'0 5px'}}>Get Pre-Approved</ABtn>
                     </Row>
                 </Container>
-                <Container style={{display:'flex',alignItems: 'baseline',justifyContent: 'center',alignItems:'center'}}>
-                    <video autoplay={'on'} loop={'loop'} muted={'on'} width={'100%'} style={{position: 'relative'}}>
+                <Container style={{ fontFamily: 'Architects Daughter',display:'flex',alignItems: 'baseline',justifyContent: 'center',alignItems:'center'}}>
+                    <video autoplay={'on'} loop={'loop'} muted={'on'} width={'100%'} style={{position: 'relative',width:'auto'}}>
                         <source type={"video/mp4"} src='../../1632 Stradella Road Bel Air_00_00_45-00_01_10 - oDownloader.mp4'/>
                     </video>
                 <div style={{display:'flex',flexDirection:"column",position:'absolute'}}>

@@ -134,7 +134,7 @@ class UserPage extends Component {
         return (
             <Container>
             <Container 
-            style={{ textAlign: 'center', backgroundImage: "url(./images/realestate-aidturk.jpg)",backgroundSize:'cover' ,height:'550px',position:'relative'}}>
+            style={{ fontFamily: 'Architects Daughter', textAlign: 'center', backgroundImage: "url(./images/realestate-aidturk.jpg)",backgroundSize:'cover' ,height:'550px',position:'relative'}}>
                 <h1 style={{textShadow:'2px 2px 2px lightseagreen'}}>
                     Hello {this.state.user.first_name}, Good to see you again</h1>
                 <div style={{display:'flex',flexDirection:'row',justifyContent:'space-between'}}>

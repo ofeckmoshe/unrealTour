@@ -73,7 +73,6 @@ class Login extends Component {
                                 onBlur={this.inputChange} />
                         <a style={{ color: "gray" }} href={"/"}>forgot password?</a>
                         <LogInBtn onClick={this.onSubmit}>Log In</LogInBtn>
-                        <FbBtn>Log In With Facebook</FbBtn>
                     </Col>
                     <Col type={"4"}>
                         <h4 onClick={this.props.openLogIn} style={{cursor: "pointer"}}>

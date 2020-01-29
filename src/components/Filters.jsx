@@ -30,6 +30,7 @@ class Filters extends React.Component{
             sale_status:"",
             order:"row",
             val:this.props.data ? this.props.data:"",
+            page:1,
             query:{},
         }
     }
@@ -44,9 +45,10 @@ class Filters extends React.Component{
         })
     }
 
-    onSuccess = (apt) => {
+    onSuccess = (apartments, allApartmentsLength) => {
         this.setState({
-            apartments:  apt,
+            apartments: apartments,
+            allApartmentsLength: allApartmentsLength
         });
         if(this.state.val){
             this.uptateArr(this.state.val);
@@ -117,6 +119,23 @@ class Filters extends React.Component{
     addToWishList = (user_id,apartment_id) =>{
         addWish(user_id,apartment_id)
     }
+
+    next = ()=>{
+        if(this.state.page*20<this.state.allApartmentsLength.size){
+            this.setState({page:this.state.page+1},()=>{this.state.query.page = this.state.page;
+            getApartmentsFromServer(this.onSuccess,this.state.query)
+            window.scrollTo(0, 0);})
+        }   
+    }
+
+    prev = ()=>{
+        if(this.state.page > 1){
+            this.setState({page:this.state.page-1},()=>{this.state.query.page = this.state.page;
+            getApartmentsFromServer(this.onSuccess,this.state.query)
+            window.scrollTo(0, 0);})
+        }   
+    }
+
     render() {
         return(
             <Container>
@@ -141,6 +160,10 @@ class Filters extends React.Component{
                         )
                     })
                     }
+                </div>
+                <div className="text-center">
+                    <button onClick={this.prev}>prev</button>
+                    <button onClick={this.next}>next</button>
                 </div>
             </Container>
         )

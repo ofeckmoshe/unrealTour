@@ -20,13 +20,13 @@ class SubHeader extends React.Component {
     componentWillMount() {
         getApartmentsFromServer(this.onSuccess)
     };
-    onSuccess = (apt, cities) => {
-        let start = this.randIndex(apt);
+    onSuccess = (apartments, allApartmentsLength) => {
+        let start = this.randIndex(apartments);
         this.setState({
-            apartments:  apt,
-            cities: cities,
-            shortApartments:apt.slice(start,start+4),
-            apartmentsLength:apt.length,
+            apartments:  apartments,
+            allApartmentsLength: allApartmentsLength,
+            shortApartments:apartments.slice(start,start+4),
+            apartmentsLength:apartments.length,
         });
     };
 
@@ -57,12 +57,11 @@ class SubHeader extends React.Component {
                     </Row>
                 </Container>
                 <Container style={{ fontFamily: 'Architects Daughter',display:'flex',alignItems: 'baseline',justifyContent: 'center',alignItems:'center'}}>
-                    <video autoplay={'on'} loop={'loop'} muted={'on'} width={'100%'} style={{position: 'relative',width:'auto'}}>
+                    <video autoPlay={'on'} loop={'loop'} muted={'on'} width={'100%'} style={{position: 'relative'}}>
                         <source type={"video/mp4"} src='../../1632 Stradella Road Bel Air_00_00_45-00_01_10 - oDownloader.mp4'/>
                     </video>
                 <div style={{display:'flex',flexDirection:"column",position:'absolute'}}>
                     <h1 style={{color:'white',textAlign:'center'}} className="d-none d-md-block">The Home of Home Search</h1>
-                    <h2 style={{color:'white',textAlign:'center'}} className="d-none d-md-block">With the most complete source of homes for sale & real estate near you</h2>
                     <Container>
                         <Row style={{justifyContent:'center', margin:'15px 0'}}>
                             <div><SubLinks href="/"><b>BUY</b></SubLinks></div>
@@ -101,13 +100,13 @@ class SubHeader extends React.Component {
                 <Neighborhoods/>
                 <Container>
                     <Row>
-                        <Col type={"5"} style={{backgroundImage:"url('https://pix10.agoda.net/geo/city/318/1_318_02.jpg?s=1920x822')",
+                        <Col type={"5"} style={{backgroundImage:"url('https://images.globes.co.il/images/NewGlobes/big_image_800/2016/geser800.jpg')",
                             backgroundSize:'cover',minHeight:"200px",textAlign:"center",borderRadius:"10px",margin:"15px 5px"}}>
-                            <h2 style={{color:"white"}}>The Insider's Guide to Renting in New York City</h2>
+                            <h2 style={{color:"white"}}>The Insider's Guide to Renting in Jerusalem</h2>
                         </Col>
-                        <Col type={"5"} style={{backgroundImage:"url('https://www.nyp.org/graphics/pps/banner-pps.jpg')",
+                        <Col type={"5"} style={{backgroundImage:"url('https://www.touristisrael.com/wp-content/uploads/tel-aviv-1779649_960_720-001.jpg')",
                             backgroundSize:'cover',minHeight:"200px",textAlign:"center",borderRadius:"10px",margin:"15px 5px"}}>
-                            <h2 style={{color:"white"}}>The Insider's Guide to Renting in New York City</h2>
+                            <h2 style={{color:"white"}}>The Insider's Guide to Renting in TLV City</h2>
                         </Col>
                     </Row>
                 </Container>

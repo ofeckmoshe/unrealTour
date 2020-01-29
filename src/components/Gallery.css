@@ -1,3 +1,7 @@
+body{
+  font-family: 'Acme'
+}
+
 .apartmentCard {
   text-decoration: none !important;
   color: inherit; }

@@ -14,7 +14,7 @@ export const getApartmentsFromServer = async (onSuccess,query) => {
     try {
         const {data} = await fetcher.get(`/apartments/?${getQuery(query)}`);
         
-        onSuccess(data.apartments);
+        onSuccess(data.apartments[0],data.apartments[1][0]);
     }catch(error){
         console.log(error);
     }

@@ -26,8 +26,8 @@ class BedsFilter extends React.Component {
     render() {
         return(
             <div style={{paddingTop:"15px"}}>
-                <MyBtn onClick={()=>{this.openBeds()}}>Beds <i
-                    className="fa fa-bed"></i></MyBtn>
+                <MyBtn onClick={()=>{this.openBeds()}}>bath <i
+                    className="fas fa-bath"></i></MyBtn>
                 {this.props.bedSelect &&<MyDiv>
                     <h3>Bedrooms</h3>
                     <MyUl>

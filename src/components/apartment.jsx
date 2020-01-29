@@ -62,7 +62,9 @@ class Apartment extends React.Component{
     render() {
         return (
             this.state.loading ?<p style={{margin:"auto"}}>Lpading...</p>:
-            <Container>
+            <Container style={{marginTop:'15px'}}>
+            <Row>
+            <Col sm="8">
             <Carousel onSlideEnd={this.setIndex} indicators={false}>
                 {this.state.apartment.images.split(',').map((img,i) => {
                     return (
@@ -78,15 +80,23 @@ class Apartment extends React.Component{
                 })
                 }
             </Carousel>
+            </Col>
+            <Col sm="4" style={{backgroundImage: 'url(https://www.bostonmagazine.com/wp-content/uploads/sites/2/2019/08/moving-company-stories-feature.jpg)',
+                    backgroundSize:'cover',textAlign: 'center',display:'flex',alignItems:'center'}}>
+                    <div style={{transform:'rotate(30deg)',color:'firebrick',textShadow:'1px 1px 1px black'}}>
+                        <h3>the Brotheres moving</h3>
+                        <h3>052-648-8965</h3>
+                    </div>
+            </Col>
+            </Row>
                 <Row style={{position:'relative',bottom:'35px'}}>
             <GreenRect>Created on - {new Date(this.state.apartment.created_on).toLocaleDateString()}</GreenRect>
                     <BlackRectF>Rent/Sale: {this.state.apartment.sale_status} active</BlackRectF>
                     <BlackRectS> <i className='fas fa-camera'></i> {this.state.index}/{this.state.imagesLength}</BlackRectS>
                 </Row>
-                {/*<InHeart href={"javascript:void(0)"}><i className="fa fa-heart-o"></i></InHeart>*/}
                 <Row style={{borderBottom:"1px solid",paddingBottom:"35px"}}>
                     <Col type={"4"}>
-                        <h1>${this.state.apartment.price}M</h1>
+                        <h1>${this.state.apartment.price}</h1>
                         <p>{this.state.apartment.number_of_bath} baths |  {this.state.apartment.number_of_room} rooms | {this.state.apartment.sqft} sqft lot</p>
                         <h5>{this.state.apartment.address} - {this.state.apartment.city}</h5>
                     </Col>
@@ -125,19 +135,6 @@ class Apartment extends React.Component{
                     <i className='fab fa-whatsapp' style={{fontSize:'36px',color:'lightgreen',margin:'0 2px', transitionDelay: '1s'}}/>
                     <i className='fab fa-twitter' style={{fontSize:'36px',color:'lightblue',margin:'0 2px', transitionDelay: '1.5s'}}/>
                 </div>
-                <Row style={{margin:'50px 0'}}>
-                    <Col type={"4"} style={{backgroundColor:'lightgray'}}>
-                        <form style={{display:'flex',flexDirection:'column',padding:'30px 0'}}>
-                            <h4>Ask a question</h4>
-                            <input type={"text"} placeholder={"Full Name"} style={{margin:'5px 0'}}/>
-                            <input type={"email"} placeholder={"Email"} style={{margin:'5px 0'}}/>
-                            <input type={"text"} placeholder={"Phone Number"} style={{margin:'5px 0'}}/>
-                            <textarea placeholder={`'I am interested in ${this.state.apartment.address}'`} style={{margin:'5px 0'}}/>
-                            <AskBtn>Email Agent</AskBtn>
-                        </form>
-                    </Col>
-                    <Col type={"8"} style={{backgroundImage:'url(../images/stoneridge.jpg)',backgroundSize:'100% 100%'}}></Col>
-                </Row>
             </Container>
 
         )

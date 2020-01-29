@@ -3,8 +3,7 @@ import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import Cookie from 'js-cookie';
 import { getAllCitiesFromServer } from "../api/controllers/cities";
 import {addApartment} from "../api/controllers/apartments"
-import {addImages} from "../api/controllers/images"
-import {getApartmentsFromServer,getSingleApartment,getWishList} from "../api/controllers/apartments";
+import {getApartmentsFromServer,getWishList} from "../api/controllers/apartments";
 import Gallery from "./Gallery";
 
 class UserPage extends Component {
@@ -54,14 +53,9 @@ class UserPage extends Component {
         this.setState({
             [name]: val,
             val: val,
-            counter:++this.state.counter
         });
 
     };
-
-    // hendleSelect = (e) => {
-    //     const name = e.target.name;
-    // };
 
     upload = (e) => {
         e.preventDefault()
@@ -125,15 +119,22 @@ class UserPage extends Component {
         this.setState({myWishList:!this.state.myWishList},()=>{this.state.myWishList&&window.scrollTo(0, this.wish.current.offsetTop)})
     }
 
-    render() {
-        if(this.state.done){
-            console.log(this.state.wishList)
+    backToTop = (from) =>{
+        if(from == 'upload'){
+            this.myUpload();
+        }else{
+            this.myWishList();
         }
+        window.scrollTo(0, 0);
+    }
+
+    render() {
         const citiesArr = [];
         for (var city in this.state.cities) {
             citiesArr.push(this.state.cities[city].name);
         }
         return (
+            <Container fluid >
             <Row>
                 <div style={{display:'flex',flexDirection:'column',backgroundColor:'lightgray',padding:'0'}} className={'col-2'}>
                     <Button variant="info" onClick={this.openForm} style={{float:'left',display:'block'}}>
@@ -145,7 +146,7 @@ class UserPage extends Component {
             
             <Container className={'col-10'}>
             <Container 
-            style={{ fontFamily: 'Architects Daughter', textAlign: 'center', backgroundImage: "url(./images/realestate-aidturk.jpg)",backgroundSize:'cover' ,height:'550px',position:'relative'}}>
+            style={{ textAlign: 'center', backgroundImage: "url(./images/realestate-aidturk.jpg)",backgroundSize:'cover' ,height:'550px',position:'relative'}}>
                 <h1 style={{textShadow:'2px 2px 2px lightseagreen'}}>
                     Hello {this.state.user.first_name}, Good to see you again</h1>
 
@@ -236,20 +237,13 @@ class UserPage extends Component {
                                 </Form.Control>
                             </Form.Group>
                         </Form.Row>
-                        {/* <Button variant={this.state.counter == 11 ?"primary" :"light"} type="submit" 
-                                onClick={this.upload} disabled={this.state.counter == 11 ? false: true}>
-                            Submit
-                    </Button> */}
                       <input type="submit" onSubmit={this.upload}/>
                     </Form>}
-                    <Row style={{position:'absolute',bottom:0}}>
-                        <h1 className={'col-12'} style={{textShadow:'2px 2px 2px lightseagreen'}}>you have uploaded  - {this.state.apartments?this.state.apartments.length:'0'} apartments,</h1>
-                        <h1 className={'col-12'} style={{textShadow:'2px 2px 2px lightseagreen'}}>and - {this.state.wishList?this.state.wishList.length:'0'} in wish list</h1>
-                    </Row>
             </Container>
             {this.state.apartments && this.state.myUpload &&
             <div ref={this.uploaded} id={'apartmentDeck'} className={'row card-deck cards d-flex justify-content-center'} style={{alignItems:"center",padding:'10px',overflowX:'auto'}}>
-                    <h3 className={'col-12'}>your uploaded apartments list - {this.state.apartments.length} apartments is available</h3>
+                    <h3 className={'col-11'}>your uploaded apartments list - {this.state.apartments.length} apartments is available</h3>
+                    <Button onClick={() =>{this.backToTop('upload')}} className={'col-1'} variant="info">top</Button>
                     {this.state.apartments.map((item,i) => {
                         return (
                             <Gallery {...item} key = {i} order={'row'}/>
@@ -259,7 +253,8 @@ class UserPage extends Component {
                 </div>}
             {this.state.wishList && this.state.myWishList &&
             <div ref={this.wish} id={'apartmentDeck'} className={'row card-deck cards d-flex justify-content-start'} style={{padding:'10px',overflowX:'auto'}}>
-                    <h3 className={'col-12'}>your wish list - {this.state.wishList.length} apartments is available</h3>
+                    <h3 className={'col-11'}>your wish list - {this.state.wishList.length} apartments is available</h3>
+                    <Button onClick={() =>{this.backToTop('wish')}} className={'col-1'} variant="info">top</Button>
                     {this.state.wishList.map((item,i) => {
                         return (
                             <Gallery {...item} key = {i} order={'row'}/>
@@ -269,6 +264,7 @@ class UserPage extends Component {
                 </div>}
             </Container>
             </Row>
+            </Container>
         );
     }
 }
